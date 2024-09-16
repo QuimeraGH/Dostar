@@ -15,24 +15,45 @@ function App() {
 
   const [tasks, setTasks] = useState<Task[]>([])
   const [todoDescription, setTodoDescription] = useState<string>("")
-  
+  const [filteredTasks, setFilteredTasks] = useState<Task[]>([]);
+  const [filter, setFilter] = useState<string>("all");
+
+  const updateFilter = (newFilter: string) => {
+    setFilter(newFilter.trim());
+  };  
+
   const getTasksCall = async () => {
     try {
-      const tasks = (await invoke("get_tasks_call")) as Task[]
-      if (tasks.length == 0) {
-        console.log("Nothing to fetch!")
+      const fetchedTasks = (await invoke("get_tasks_call")) as Task[];
+      if (fetchedTasks.length === 0) {
+        console.log("Nothing to fetch!");
         return;
       }
-
-      setTasks(tasks)
+      setTasks(fetchedTasks);
+      setFilteredTasks(fetchedTasks);
     } catch (e) {
-      console.error("Error on fetching todos!: ", e)
+      console.error("Error fetching todos!: ", e);
     }
-  }
+  };
 
   useEffect(() => {
     getTasksCall()
   }, [])
+
+  useEffect(() => {
+    let filtered = [...tasks];
+    switch (filter) {
+      case "all":
+        setFilteredTasks(filtered);
+        break;
+      case "done":
+        setFilteredTasks(filtered.filter((task) => task.completed));
+        break;
+      case "undone":
+        setFilteredTasks(filtered.filter((task) => !task.completed));
+        break;
+    }
+  }, [tasks, filter]);
 
   useEffect(() => {
 
@@ -57,30 +78,6 @@ function App() {
     }
 
   }, [tasks])
-
-  useEffect(() => {
-
-    const table = document.getElementById("table")
-    const filters = document.getElementsByClassName("filter-button")
-    const swapdiv = document.getElementById("emptydiv")
-
-    if (table && filters && swapdiv) {
-      if (tasks.length == 0) {
-        table.style.display = "none"
-        Array.prototype.forEach.call(filters, (el) => {
-          el.style.display = "none"
-        } )
-        swapdiv.style.display = "flex"
-      } else {
-        table.style.display = "block"
-        Array.prototype.forEach.call(filters, (el) => {
-          el.style.display = "block"
-        } )
-        swapdiv.style.display = "none"
-      }
-    }
-
-  }, [])
 
   // Function calls
 
@@ -159,9 +156,9 @@ function App() {
             <input placeholder="Add a new task!" spellCheck={false} value={todoDescription} id="todoinput" type="text" onChange={(e) => setTodoDescription(e.target.value)}/>
           </form>
 
-          <button className="filter-button"> All </button>
-          <button className="filter-button"> Done </button>
-          <button className="filter-button"> Undone </button>
+          <button id="allbut" onClick={() => updateFilter("all")} className="filter-button"> All </button>
+          <button id="donebut" onClick={() => updateFilter("done")} className="filter-button"> Done </button>
+          <button id="undonebut" onClick={() => updateFilter("undone")} className="filter-button"> Undone </button>
 
         </div>
         <div id="titlebar-buttons">
@@ -192,7 +189,7 @@ function App() {
           </tr>
 
           <tbody>
-          {tasks.map((task) => 
+          {filteredTasks.map((task) => 
             <tr key={task.id}>
               <td>{task.description}</td>
               <td>{task.date}</td>

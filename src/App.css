@@ -275,3 +275,7 @@ input[type="checkbox"]:checked {
   overflow-y:scroll;
   overflow-x:hidden;
 }
+
+.filter-button:focus {
+  background-color: #550f51;
+}
