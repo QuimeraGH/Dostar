@@ -1,4 +1,6 @@
 # DOSTAR
+![image](./src-tauri/icons/icon.png)
+
 App made in Rust, Tauri, SQLite to make a simple scalable desktop app as a task manager.
 ## Features
 - Add, Delete, Check tasks.
