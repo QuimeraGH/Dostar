@@ -1,0 +1,277 @@
+:root {
+  font-family: Roboto;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  --background1: #110b20;
+  --background2: #550f51;
+
+  color: white;
+  background-color: transparent;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background: linear-gradient(45deg, var(--background1), var(--background2));
+  height: 100vh;
+  width: 100vw;
+  border-radius: 2rem;
+  align-items: center;
+}
+
+.titlebar {
+  height: 12vh;
+  background: transparent;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  align-items: stretch;
+  border-bottom: 1px solid white;
+}
+
+#titlebar-title {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding-left: 4px;
+  padding-right: 4px;
+  font-size: 28px;
+  margin-left: 1rem;
+}
+
+#titlebar-title p {  
+  margin: auto;
+  margin-right: 1rem;
+}
+
+#titlebar-title form {
+  display: flex;
+  align-items: center;
+}
+
+#titlebar-title input {
+  background-color: black;
+  border: 1px white solid;
+  color: white;
+  border-radius: 4px;
+  height: 1.2rem;
+}
+
+.filter-button {
+  height: 1.6rem;
+  width: 2.4rem;
+  margin-left: 0.8rem;
+}
+
+#titlebar-buttons {
+  align-items: stretch;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+#titlebar-buttons div {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#titlebar-close {
+  margin-left: 0.4rem;
+}
+
+#titlebar-minimize {
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+#titlebar-close img {
+  width: 2.4rem;
+  height: 2.4rem;
+  transition: ease 0.3s;
+}
+
+#titlebar-close:hover #closebutton {
+  filter: brightness(0);
+}
+
+.titlebar-button {
+  margin: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  user-select: none;
+  text-align: center;
+  -webkit-user-select: none;
+}
+
+#titlebar-minimize, #titlebar-maximize {
+  font-weight: 400;
+  transition: ease 0.3s;
+}
+
+#titlebar-minimize:hover, #titlebar-maximize:hover {
+  background: var(--background1);
+}
+
+table {
+  border-collapse: separate;
+  border-radius: 6px !important;
+  border: 1px solid white;
+}
+
+th {
+  background-color: black;
+}
+
+td {
+  border: 1px solid #ccc;
+  text-align: center;
+  vertical-align: middle;
+  height: 100%;
+  position: relative;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;
+}
+
+tr {
+  background-color: black;
+}
+
+td, th {
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+}
+
+#row-description {
+  width: 28rem !important;
+  max-width: 28rem !important;
+}
+
+#row-complete {
+  width: 7rem !important;
+  align-items: stretch;
+}
+
+#row-delete {
+  width: 6rem !important;
+}
+
+#row-date {
+  width: 6rem !important;
+}
+
+.filter-button {
+  text-align: center;
+  width: auto;
+  background-color: black;
+  border: 1px solid black;
+  color: white;
+  transition: ease 0.2s;
+  border-radius: 5px;
+}
+
+.filter-button:hover {
+  background-color: white;
+  color: black;
+  border: 1px double black;
+}
+
+#checkboxcontainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+input[type="checkbox"] {
+  
+  width: 100%;
+  height: 6rem;
+  cursor: pointer;
+  margin: 0;
+  appearance: none;
+  border: 2px solid white;
+  background-color: black;
+  transition: background-color 0.3s, border 0.3s;
+  border-radius: 4px;
+}
+
+input[type="checkbox"]:checked {
+  background-color: green; /* Color for checked state */
+  border-color: green;
+}
+
+#tododeletebutton {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  transition: ease 0.3s;
+  filter: brightness(0) invert(0);
+}
+
+#tododeletebutton:hover {
+  filter: brightness(1) invert(0);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.swapdiv {
+  margin-top: 16vh;
+  margin-left: 1.6rem;
+  margin-right: 1.6rem;
+  bottom: 0;
+  top: 0;
+  position:fixed;
+}
+
+#emptydiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  width: 90%;
+  border-radius: 1rem;
+  border: 1px solid white;
+}
+
+#table {
+  overflow-y:scroll;
+  overflow-x:hidden;
+}
