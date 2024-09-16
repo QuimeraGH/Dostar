@@ -1,7 +1,17 @@
-# Tauri + React + Typescript
-
-This template should help get you started developing with Tauri, React and Typescript in Vite.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+# DOSTAR
+App made in Rust, Tauri, SQLite to make a simple scalable desktop app as a task manager.
+## Features
+- Add, Delete, Check tasks.
+- Connection to local database in SQLite.
+- Fast async operations in Rust backend.
+- Begginer learning project.
+## Tooling
+- React.
+- Tauri.
+- Typescript.
+- Rust.
+- SQLite(rusqlite)
+## Installation
+You can clone the repository or installing the msi installer for windows.
+## License
+Under MIT License.
